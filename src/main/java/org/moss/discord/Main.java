@@ -40,12 +40,12 @@ public class Main {
         } catch (FileNotFoundException e) {
             logger.error("No .token file!");
             return;
-		} catch (IOException e) {
+	} catch (IOException e) {
             logger.error("Failed to read .token file", e);
             return;
         }
 
-        DiscordApi api = new DiscordApiBuilder().setToken(args[0]).login().join();
+        DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
         logger.info("Logged in to Discord account {}", api.getYourself().getName());
 
         // Create command handler
