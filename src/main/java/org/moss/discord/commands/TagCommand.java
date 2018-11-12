@@ -83,7 +83,7 @@ public class TagCommand implements CommandExecutor, MessageCreateListener {
     public Boolean hasPermission(List<Role> roles) {
         for (Role role : roles) {
             String roleId = role.getIdAsString();
-            if ((roleId.equals(Constants.ROLE_MODERATOR) || roleId.equals(Constants.ROLE_ADMIN) || roleId.equals(Constants.ROLE_PROJECT_LEAD))) {
+            if ((roleId.equals(Constants.ROLE_MODERATOR) || roleId.equals(Constants.ROLE_ADMIN))) {
                 return true;
             }
         }

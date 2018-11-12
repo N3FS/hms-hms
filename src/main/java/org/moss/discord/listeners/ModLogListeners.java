@@ -69,7 +69,7 @@ public class ModLogListeners implements MessageEditListener, MessageDeleteListen
 
         embed.setAuthor("DELETE");
         embed.setColor(Color.RED);
-        embed.setThumbnail("https://i.imgur.com/bYGnGCp.png");
+        embed.setThumbnail("https://cdn.discordapp.com/emojis/350738469242273802.png");
 
         embed.addInlineField("Author", message.getAuthor().asUser().get().getMentionTag());
         embed.addInlineField("Channel", String.format("<#%s>", ev.getChannel().getId()));
@@ -89,7 +89,7 @@ public class ModLogListeners implements MessageEditListener, MessageDeleteListen
 
         embed.setAuthor("EDIT");
         embed.setColor(Color.YELLOW);
-        embed.setThumbnail("https://i.imgur.com/bYGnGCp.png");
+        embed.setThumbnail("https://cdn.discordapp.com/emojis/350738469242273802.png");
 
         embed.addInlineField("Author", ev.getMessage().get().getAuthor().asUser().get().getMentionTag());
         embed.addInlineField("Channel", String.format("<#%s>", ev.getChannel().getId()));
@@ -202,7 +202,7 @@ public class ModLogListeners implements MessageEditListener, MessageDeleteListen
 
         embed.setAuthor("NAME CHANGE");
         embed.setColor(Color.YELLOW);
-        embed.setThumbnail("https://i.imgur.com/bYGnGCp.png");
+        embed.setThumbnail("https://cdn.discordapp.com/emojis/350738469242273802.png");
 
         embed.addInlineField("Old", ev.getOldName());
         embed.addInlineField("New", ev.getNewName());
@@ -219,7 +219,7 @@ public class ModLogListeners implements MessageEditListener, MessageDeleteListen
 
         embed.setAuthor("NICK CHANGE");
         embed.setColor(Color.YELLOW);
-        embed.setThumbnail("https://i.imgur.com/bYGnGCp.png");
+        embed.setThumbnail("https://cdn.discordapp.com/emojis/350738469242273802.png");
 
         embed.addInlineField("Old", ev.getOldNickname().get());
         embed.addInlineField("New", ev.getNewNickname().get());
