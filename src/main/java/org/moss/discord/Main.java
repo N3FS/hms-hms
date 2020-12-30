@@ -1,21 +1,17 @@
 package org.moss.discord;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
+import de.btobastian.sdcf4j.CommandHandler;
+import de.btobastian.sdcf4j.handler.JavacordHandler;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.moss.discord.commands.AvatarCommand;
 import org.moss.discord.commands.EmbedCommand;
-import org.moss.discord.commands.SayCommand;
-import org.moss.discord.listeners.StarboardListener;
 import org.moss.discord.commands.GithubCommand;
 import org.moss.discord.commands.MojangCommand;
-import org.moss.discord.commands.RoleCheckCommand;
 import org.moss.discord.commands.NicknameCommand;
 import org.moss.discord.commands.PresenceCommand;
+import org.moss.discord.commands.RoleCheckCommand;
+import org.moss.discord.commands.SayCommand;
 import org.moss.discord.commands.TagCommand;
 import org.moss.discord.commands.moderation.BanCommand;
 import org.moss.discord.commands.moderation.KickCommand;
@@ -27,8 +23,10 @@ import org.moss.discord.listeners.StarboardListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.btobastian.sdcf4j.CommandHandler;
-import de.btobastian.sdcf4j.handler.JavacordHandler;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
 
@@ -37,17 +35,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String token;
+        String token = null;
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(".token"));
+        try (BufferedReader reader = new BufferedReader(new FileReader(".token"))) {
             token = reader.readLine();
         } catch (FileNotFoundException e) {
             logger.error("No .token file!");
-            return;
-	} catch (IOException e) {
+        } catch (IOException e) {
             logger.error("Failed to read .token file", e);
-            return;
+        } finally {
+            if (token == null) {
+                return;
+            }
         }
 
         DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
